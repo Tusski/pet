@@ -2,26 +2,27 @@
 
 require "config.php";
 
-use App\Student;
+use App\Pet;
 
 try {
-	Student::register('Richard', 'Feynman', 'richard@feynman.com');
-	echo "<li>Added 1 student";
+	Pet::register('Richard', 'Doberman', 'Rich');
+	header("Location: index.php");
+	echo "<li>Added 1 pet</li>";
 
-	$students = [
+	$pets = [
 		[
-			'first_name' => 'Albert',
-			'last_name' => 'Einstein',
-			'email' => 'albert@einstein.com'
+			'name' => 'Albert',
+			'breed' => 'Chihuahua',
+			'owner_name' => 'Eins'
 		],
 		[
-			'first_name' => 'Paul',
-			'last_name' => 'Erdos',
-			'email' => 'paul@erdos.com'
+			'name' => 'Pol',
+			'breed' => 'Askal',
+			'owner_name' => 'Paul'
 		]
 	];
-	Student::registerMany($students);
-	echo "<li>Added " . count($students) . " more students";
+	Pet::registerMany($pets);
+	echo "<li>Added " . count($pets) . " more pets</li>";
 	echo "<br /><a href='index.php'>Proceed to Index Page</a>";
 
 } catch (PDOException $e) {
@@ -29,3 +30,4 @@ try {
 	echo "<h1 style='color: red'>" . $e->getMessage() . "</h1>";
 }
 
+?>

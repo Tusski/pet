@@ -2,16 +2,22 @@
 
 require "config.php";
 
-use App\Student;
+use App\Pet;
 
-// Save the Student information, and automatically redirect to index
+// Save the Pet information, and automatically redirect to index
 
 try {
 	$id = $_POST['id'];
-	$first_name = $_POST['first_name'];
-	$last_name = $_POST['last_name'];
+	$name = $_POST['name'];
+	$breed = $_POST['breed'];
+	$birthdate = $_POST['birthdate'];
+	$ownerName = $_POST['ownername'];
+	$gender = $_POST['gender'];
+	$address = $_POST['address'];
 	$email = $_POST['email'];
-	$result = Student::update($id, $first_name, $last_name, $email);
+	$contact_number = $_POST['contact_number'];
+
+	$result = Pet::update($id, $name, $breed, $birthdate, $ownerName, $gender, $address, $email, $contact_number);
 
 	if ($result) {
 		header('Location: index.php');
@@ -21,4 +27,3 @@ try {
 	error_log($e->getMessage());
 	echo "<h1 style='color: red'>" . $e->getMessage() . "</h1>";
 }
-

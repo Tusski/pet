@@ -2,10 +2,10 @@
 
 require "config.php";
 
-use App\Student;
+use App\Pet;
 
 try {
-	Student::clearTable();
+	Pet::clearTable();
 	echo "<li>Truncated table";
 
 } catch (PDOException $e) {
